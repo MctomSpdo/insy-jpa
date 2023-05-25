@@ -4,8 +4,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@SequenceGenerator(name = "person_seq_gen", sequenceName = "person_seq", initialValue = 1000)
-public class Person {
+@SequenceGenerator(name = "person_seq_gen",
+        sequenceName = "person_seq",
+        initialValue = 1000)
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "person_seq_gen")
